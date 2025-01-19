@@ -2,12 +2,16 @@ package com.alexpoty.shopcoservice.model;
 
 import com.alexpoty.shopcoservice.model.enums.Currency;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -24,11 +28,4 @@ public class Product {
 
     @Enumerated(EnumType.STRING)
     private Currency currency;
-
-    @ManyToOne
-    @JoinColumn
-    private Category category;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Review> reviews;
 }
